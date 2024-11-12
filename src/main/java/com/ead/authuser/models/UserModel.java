@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL) // caso algum atributo fique nulo, nao aparecera na serelizacao
 @Entity
 @Table(name = "TB_USERS")
 public class UserModel implements Serializable {

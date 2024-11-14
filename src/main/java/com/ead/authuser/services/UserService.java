@@ -16,4 +16,5 @@ public interface UserService {
     boolean existByEmail(String email);
     UserModel updateUser(UserDto userDto, UserModel userModel);
     UserModel updateUserPassword(UserDto userDto, UserModel userModel);
+    UserModel updateUserImage(UserDto userDto, UserModel userModel);
 }

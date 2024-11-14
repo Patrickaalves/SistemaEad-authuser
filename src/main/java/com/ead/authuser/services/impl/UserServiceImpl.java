@@ -73,4 +73,12 @@ public class UserServiceImpl implements UserService {
 
         return userRepository.save(userModel);
     }
+
+    @Override
+    public UserModel updateUserPassword(UserDto userDto, UserModel userModel) {
+        userModel.setPassword(userDto.password());
+        userModel.setLastUpdateDate(LocalDateTime.now(ZoneId.of("UTC")));
+
+        return userRepository.save(userModel);
+    }
 }

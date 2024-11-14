@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -40,5 +41,16 @@ public class UserController {
     public ResponseEntity<Object> updateUser(@PathVariable(value = "userId") UUID id,
                                              @RequestBody @JsonView({UserDto.UserView.UserPut.class}) UserDto userDto) {
         return ResponseEntity.status(HttpStatus.OK).body(userService.updateUser(userDto, userService.findById(id).get()));
+    }
+
+    @PutMapping("/{userId}/password")
+    public ResponseEntity<Object> updateUserPassword(@PathVariable(value = "userId") UUID id,
+                                             @RequestBody @JsonView({UserDto.UserView.PasswordPut.class}) UserDto userDto) {
+        Optional<UserModel> userModelOptional = userService.findById(id);
+        if (!userModelOptional.get().getPassword().equals(userDto.oldPassword())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Mismatched old password.");
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(userService.updateUserPassword(userDto, userModelOptional.get()));
     }
 }

@@ -9,7 +9,6 @@ import net.kaczmarzyk.spring.data.jpa.web.annotation.Spec;
 import org.springframework.data.jpa.domain.Specification;
 
 public class SpecificationTemplate {
-
     @And({
             @Spec(path = "userType", spec = Equal.class),
             @Spec(path = "userStatus", spec = Equal.class),

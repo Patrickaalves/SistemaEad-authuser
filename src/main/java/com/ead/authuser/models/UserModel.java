@@ -59,7 +59,7 @@ public class UserModel extends RepresentationModel<UserModel> implements Seriali
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private Set<UserCourseModel> userCourseModel;
+    private Set<UserCourseModel> usersCourses;
 
     public UUID getUserId() {
         return userId;
@@ -149,11 +149,11 @@ public class UserModel extends RepresentationModel<UserModel> implements Seriali
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public Set<UserCourseModel> getUserCourseModel() {
-        return userCourseModel;
+    public Set<UserCourseModel> getUsersCourses() {
+        return usersCourses;
     }
 
-    public void setUserCourseModel(Set<UserCourseModel> userCourseModel) {
-        this.userCourseModel = userCourseModel;
+    public void setUsersCourses(Set<UserCourseModel> usersCourses) {
+        this.usersCourses = usersCourses;
     }
 }
